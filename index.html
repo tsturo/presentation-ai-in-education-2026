@@ -98,7 +98,7 @@ body{background:var(--white);color:var(--black);font-family:'Instrument Sans',sy
 #isl-past{left:380px;top:330px;width:880px;height:430px;background:var(--creme);box-shadow:0 30px 70px rgba(19,19,19,.08);
   background-image:radial-gradient(rgba(185,196,201,.30) 1.5px,transparent 1.5px);background-size:23px 23px}
 #isl-break{left:1300px;top:700px;width:530px;height:330px;background:var(--black);box-shadow:0 36px 90px rgba(19,19,19,.28)}
-#isl-future{left:1430px;top:60px;width:430px;height:300px;background:linear-gradient(180deg,#FEFEFE 0%,#F3EDFF 100%);outline:3px dashed var(--purple);outline-offset:-16px;box-shadow:0 26px 60px rgba(19,19,19,.07)}
+#isl-future{left:1430px;top:60px;width:430px;height:300px;background:linear-gradient(135deg,#FEFEFE 0%,#F3EDFF 58%,#FDEEE7 100%);outline:3px dashed var(--purple);outline-offset:-16px;box-shadow:0 26px 60px rgba(19,19,19,.07)}
 
 .zlbl{position:absolute;font-weight:700;font-size:17px;letter-spacing:.22em;color:var(--black)}
 .zlbl b{display:inline-block;background:var(--purple);color:#fff;border-radius:999px;padding:4px 12px;margin-right:10px;letter-spacing:.06em}
@@ -250,19 +250,22 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
       <linearGradient id="amp" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#7F56FA"/><stop offset="1" stop-color="#FF7A59"/>
       </linearGradient>
+      <linearGradient id="ampline" x1="1490" y1="200" x2="1810" y2="200" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#7F56FA"/><stop offset="1" stop-color="#FF7A59"/>
+      </linearGradient>
     </defs>
     <path d="M1270 575 L1302 612 L1268 650 L1324 674 L1334 720" stroke="url(#amp)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
     <g class="g-climb">
-      <path class="march" d="M1768 700 C1808 622 1690 584 1610 530 C1528 476 1478 446 1476 372" stroke="#7F56FA" stroke-width="7" stroke-dasharray="8 12" stroke-linecap="round" fill="none"/>
-      <path d="M1476 372 L1458 388 M1476 372 L1494 388" stroke="#7F56FA" stroke-width="7" stroke-linecap="round"/>
+      <path class="march" d="M1768 700 C1808 622 1690 584 1610 530 C1624 482 1632 430 1630 376" stroke="#7F56FA" stroke-width="7" stroke-dasharray="8 12" stroke-linecap="round" fill="none"/>
+      <path d="M1630 376 L1612 392 M1630 376 L1648 392" stroke="#7F56FA" stroke-width="7" stroke-linecap="round"/>
     </g>
     <g class="g-skills">
-      <path d="M1490 200 H1810" stroke="#7F56FA" stroke-width="5" stroke-dasharray="8 10" stroke-linecap="round"/>
+      <path d="M1490 200 H1810" stroke="url(#ampline)" stroke-width="5" stroke-dasharray="8 10" stroke-linecap="round"/>
       <circle cx="1515" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
-      <circle cx="1585" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
-      <circle cx="1655" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
-      <circle cx="1725" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
-      <circle cx="1795" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+      <circle cx="1585" cy="200" r="11" fill="#FEFEFE" stroke="#9F5FD2" stroke-width="4"/>
+      <circle cx="1655" cy="200" r="11" fill="#FEFEFE" stroke="#BF68AA" stroke-width="4"/>
+      <circle cx="1725" cy="200" r="11" fill="#FEFEFE" stroke="#DF7181" stroke-width="4"/>
+      <circle cx="1795" cy="200" r="11" fill="#FEFEFE" stroke="#FF7A59" stroke-width="4"/>
     </g>
   </svg>
 
@@ -280,10 +283,10 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
   <div class="deco" id="provenance">1 agent · single run · less than 10 minutes</div>
 
   <div class="deco skill" style="left:1515px;top:224px">judgment</div>
-  <div class="deco skill" style="left:1585px;top:148px">decomposition</div>
-  <div class="deco skill" style="left:1655px;top:224px">verification</div>
-  <div class="deco skill" style="left:1725px;top:148px">taste</div>
-  <div class="deco skill" style="left:1795px;top:224px">curiosity</div>
+  <div class="deco skill" style="left:1585px;top:148px;background:#F5EDFA;border-color:#E2CCF0;color:#7C3DA8">decomposition</div>
+  <div class="deco skill" style="left:1655px;top:224px;background:#F9EEF6;border-color:#ECCEE3;color:#A04687">verification</div>
+  <div class="deco skill" style="left:1725px;top:148px;background:#FCEFF0;border-color:#F4D2D6;color:#C14F60">taste</div>
+  <div class="deco skill" style="left:1795px;top:224px;background:#FFF0EB;border-color:#FFD6C9;color:#D94E26">curiosity</div>
   <div class="deco" id="qsheet">
     <div class="qt">OPEN QUESTIONS</div>
     <div class="qrow"><b>Q1</b><span>what do we grade now?</span></div>
@@ -313,7 +316,7 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
     <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><circle cx="24" cy="18" r="8"/><path d="M24 27 V46"/><circle cx="43" cy="23" r="6"/><path d="M43 30 V46"/><path d="M14 46 H52"/></svg>
     <div class="yr">343 BC</div><div class="nm">the tutor</div>
     <div class="rule"></div>
-    <div class="detail">Aristotle &amp; Alexander —<br><strong>a personal philosopher for a prince.</strong><br>One to one. Mastery pace. Full attention.</div>
+    <div class="detail">Aristotle &amp; Alexander.<br><strong>One teacher. One student.</strong></div>
     <div class="kick2">The ideal always existed.<br>Almost no one could afford it.</div>
   </div>
 
@@ -321,7 +324,7 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
     <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 18 C26 12 14 11 8 14 V44 C14 41 26 42 32 48 C38 42 50 41 56 44 V14 C50 11 38 12 32 18 V48"/></svg>
     <div class="yr">c. 1100</div><div class="nm">the lecture</div>
     <div class="rule"></div>
-    <div class="detail"><em>Lectura</em> — "a reading."<br>One precious, hand-copied book —<br><strong>one voice, thirty pens.</strong></div>
+    <div class="detail"><em>Lectura</em> — "a reading."<br><strong>One book, one voice, thirty pens.</strong></div>
     <div class="kick2">The constraint died in 1450.<br>The format didn't.</div>
   </div>
 
@@ -329,23 +332,23 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
     <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 44 C14 24 20 14 32 12 C44 14 50 24 50 44 Z"/><path d="M8 44 H56"/><circle cx="32" cy="52" r="4" fill="#7F56FA" stroke="none"/></svg>
     <div class="yr">1763</div><div class="nm">the batch</div>
     <div class="rule"></div>
-    <div class="detail"><span class="strike">"Schools were built for factory workers"</span> — myth.<br><strong>One trained teacher. Thirty children.<br>One pace for everyone.</strong></div>
-    <div class="kick2">Cohorts, bells, fixed curriculum —<br>we still drive this chassis.</div>
+    <div class="detail"><span class="strike">"built for factory workers"</span> — myth.<br><strong>One teacher. Thirty children.<br>One pace.</strong></div>
+    <div class="kick2">We still drive this chassis.</div>
   </div>
 
   <div id="exam" class="step station" data-x="984" data-y="575" data-scale="0.165">
     <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><rect x="14" y="8" width="36" height="48" rx="4"/><path d="M22 20 H42"/><path d="M22 30 H38"/><path d="M22 40 H42"/></svg>
     <div class="yr">1845</div><div class="nm">the exam</div>
     <div class="rule"></div>
-    <div class="detail">Too many students, too few examiners —<br><strong>so: written, standardized, batch-graded.</strong></div>
-    <div class="kick2">A grade: lossy compression of a human.<br>A diploma: a trust signal for strangers.</div>
+    <div class="detail">Too many students, too few examiners.<br><strong>Written. Standardized. Batch-graded.</strong></div>
+    <div class="kick2">A grade: a person, compressed.<br>A diploma: a trust signal.</div>
   </div>
 
   <div id="proof" class="step station" data-x="1148" data-y="575" data-scale="0.165">
     <svg width="230" height="200" viewBox="0 0 72 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><path d="M6 52 C16 52 19 18 30 18 C41 18 44 52 54 52" opacity=".4"/><path d="M18 52 C28 52 31 10 42 10 C53 10 56 52 66 52"/></svg>
     <div class="yr">1984</div><div class="nm">the proof</div>
     <div class="rule"></div>
-    <div class="detail">Bloom: tutored students ≈ <strong>+2σ</strong> above the classroom.<br>Replications: 0.3–0.8σ — <strong>still among the largest we know.</strong></div>
+    <div class="detail">Bloom: a tutored student beat<br><strong>98 of 100</strong> taught in class.</div>
     <div class="kick2">"Too costly for most societies<br>to bear on a large scale."</div>
   </div>
 
@@ -365,7 +368,7 @@ body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-o
     <div class="vk">AI didn't break education. <b>It broke the excuse.</b></div>
   </div>
 
-  <div id="skills" class="step cam" data-x="1650" data-y="226" data-scale="0.235" data-transition-duration="1500">
+  <div id="skills" class="step cam" data-x="1645" data-y="210" data-scale="0.30" data-transition-duration="1500">
   </div>
 
   <div id="questions" class="step cam" data-x="1220" data-y="200" data-scale="0.23">
