@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1024">
+<title>The End of the Grand Compromise — Education in the Age of AI</title>
+<style>/*__FONTS__*/</style>
+<style>
+:root{
+  --white:#FEFEFE;--black:#131313;
+  --purple:#7F56FA;--purple-soft:#E9E1FE;
+  --creme:#F9F5F1;--grey:#B9C4C9;--grey-light:#E7EBEC;
+  --warm:#FF7A59;
+  --green:#3fd97b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--white);color:var(--black);font-family:'Instrument Sans',system-ui,sans-serif;overflow:hidden}
+.impress-not-supported .fallback-message{
+  display:block;position:fixed;inset:0;z-index:100;background:var(--white);
+  padding:18vh 12vw;font-size:22px;line-height:1.6;color:var(--black);
+}
+.fallback-message{display:none}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* ---------- decoration layer (the canvas poster) ---------- */
+.deco{position:absolute;pointer-events:none;width:max-content}
+#dots{left:-2400px;top:-1600px;width:6720px;height:4280px;
+  background-image:radial-gradient(rgba(185,196,201,.45) 2px,transparent 2px);background-size:46px 46px}
+
+#brand{left:72px;top:56px;display:flex;align-items:center;gap:22px}
+#brand .div{width:1px;height:32px;background:#d4d8da}
+#brand img{height:44px;display:block}
+#title{left:72px;top:124px;font-weight:700;font-size:58px;letter-spacing:-.03em;line-height:1.05}
+#title span{color:var(--purple)}
+#subtitle{left:72px;top:264px;font-weight:500;font-size:22px;color:#5b6064;width:470px;line-height:1.45}
+
+.island{position:absolute;border-radius:48px}
+#isl-past{left:380px;top:330px;width:880px;height:430px;background:var(--creme);box-shadow:0 30px 70px rgba(19,19,19,.08);
+  background-image:radial-gradient(rgba(185,196,201,.30) 1.5px,transparent 1.5px);background-size:23px 23px}
+#isl-break{left:1300px;top:700px;width:530px;height:330px;background:var(--black);box-shadow:0 36px 90px rgba(19,19,19,.28)}
+#isl-future{left:1430px;top:60px;width:430px;height:300px;background:linear-gradient(180deg,#FEFEFE 0%,#F3EDFF 100%);outline:3px dashed var(--purple);outline-offset:-16px;box-shadow:0 26px 60px rgba(19,19,19,.07)}
+
+.zlbl{position:absolute;font-weight:700;font-size:17px;letter-spacing:.22em;color:var(--black)}
+.zlbl b{display:inline-block;background:var(--purple);color:#fff;border-radius:999px;padding:4px 12px;margin-right:10px;letter-spacing:.06em}
+.zsub{position:absolute;font-style:italic;font-size:19px;color:#5b6064}
+
+#term{left:1352px;top:808px;width:426px;background:#0c120d;border:1px solid #1e3527;border-radius:14px;padding:14px 18px;
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.6;color:#9fd8b4}
+#term .p{color:var(--green);font-weight:600}
+#term .ok{color:var(--green)}
+#term .cur{display:inline-block;width:8px;height:15px;background:var(--green);vertical-align:text-bottom;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+#breakphrase{left:1352px;top:972px;font-weight:700;font-size:22px;color:#fff}
+
+.skill{position:absolute;transform:translateX(-50%);background:#F1EBFF;border:1.5px solid #D7C9FE;border-radius:999px;padding:5px 14px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:#5b3fd1}
+#qsheet{left:1050px;top:80px;width:360px;background:#fff;transform:rotate(-2deg);border-radius:4px;
+  padding:30px 26px 22px;box-shadow:0 18px 44px rgba(19,19,19,.14)}
+#qsheet::before{content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(2deg);
+  width:92px;height:24px;background:rgba(233,225,254,.92);box-shadow:0 2px 6px rgba(19,19,19,.08)}
+#qsheet .qt{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.24em;color:var(--purple);margin-bottom:12px}
+#qsheet .qrow{display:flex;gap:9px;align-items:baseline;font-style:italic;font-size:12.5px;line-height:1.35;color:#43474b;
+  padding:7px 0;border-bottom:1px dashed #E4DCF8}
+#qsheet .qrow:last-child{border-bottom:none}
+#qsheet .qrow b{font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:10px;color:var(--purple);flex:0 0 22px}
+
+#closeblock{left:72px;top:740px;width:430px}
+#closeblock .zlbl{position:static;display:block;margin-bottom:16px}
+#closeblock p{font-weight:700;font-size:40px;letter-spacing:-.025em;line-height:1.12}
+#closeblock .kick{margin-top:12px;font-size:26px;font-weight:700;color:var(--purple)}
+#footer{left:72px;top:1010px;font-size:15px;letter-spacing:.18em;color:#5b6064;font-weight:500}
+
+svg.overlay{position:absolute;left:0;top:0;pointer-events:none}
+.wp{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;font-weight:700;font-size:14px;
+  display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);box-shadow:0 6px 16px rgba(127,86,250,.4)}
+.wp.dark{background:#fff;color:var(--black)}
+.wp.pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:3px solid var(--purple);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.9}80%{transform:scale(1.9);opacity:0}100%{opacity:0}}
+#today{left:1270px;top:534px;transform:translateX(-50%);font-weight:700;font-size:15px;letter-spacing:.24em;color:#D94E26}
+#rescue{left:1482px;top:272px;font-style:italic;font-size:16.5px;font-weight:700;color:var(--black)}
+#rescue span{color:var(--purple)}
+#provenance{left:1352px;top:928px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a9298}
+.dot-out{left:1768px;top:700px;width:14px;height:14px;border-radius:50%;background:var(--purple);transform:translate(-50%,-50%)}
+.march{animation:march 1.8s linear infinite}
+@keyframes march{to{stroke-dashoffset:-40}}
+#worked-line{left:426px;top:698px;font-weight:700;font-size:24px}
+#worked-line em{font-weight:400;font-style:italic;color:#5b6064;font-size:19px}
+
+/* ---------- step-gated reveals ---------- */
+.show{opacity:0;transition:opacity .7s ease .3s}
+body.impress-on-hook .r-hook{opacity:1}
+
+
+/* ---------- progressive disclosure ---------- */
+#lbl-past,#sub-past{transition:opacity .6s ease}
+body.impress-on-start #lbl-past,body.impress-on-start #sub-past{opacity:0}
+.station .rule,.station .detail,.station .kick2{opacity:0;transition:opacity .6s ease .45s}
+.station.present .rule,.station.present .detail,.station.present .kick2{opacity:1}
+#worked-line,#breakphrase,#provenance,#rescue,.g-skills,.g-climb,.dot-out,.skill,#qsheet,#closeblock{opacity:0;transition:opacity .8s ease .4s}
+body.impress-on-worked #worked-line,body.impress-on-reveal #worked-line,body.impress-on-chance #worked-line,body.impress-on-skills #worked-line,body.impress-on-questions #worked-line,body.impress-on-invite #worked-line,body.impress-on-fin #worked-line{opacity:1}
+body.impress-on-reveal #breakphrase,body.impress-on-chance #breakphrase,body.impress-on-skills #breakphrase,body.impress-on-questions #breakphrase,body.impress-on-invite #breakphrase,body.impress-on-fin #breakphrase{opacity:1}
+body.impress-on-skills .g-skills,body.impress-on-questions .g-skills,body.impress-on-invite .g-skills,body.impress-on-fin .g-skills{opacity:1}
+body.impress-on-skills .skill,body.impress-on-questions .skill,body.impress-on-invite .skill,body.impress-on-fin .skill{opacity:1}
+body.impress-on-questions #qsheet,body.impress-on-invite #qsheet,body.impress-on-fin #qsheet{opacity:1}
+body.impress-on-invite #closeblock,body.impress-on-fin #closeblock{opacity:1}
+body.impress-on-skills .g-climb,body.impress-on-questions .g-climb,body.impress-on-invite .g-climb,body.impress-on-fin .g-climb{opacity:1}
+body.impress-on-skills .dot-out,body.impress-on-questions .dot-out,body.impress-on-invite .dot-out,body.impress-on-fin .dot-out{opacity:1}
+body.impress-on-reveal #provenance,body.impress-on-chance #provenance,body.impress-on-skills #provenance,body.impress-on-questions #provenance,body.impress-on-invite #provenance,body.impress-on-fin #provenance{opacity:1}
+body.impress-on-skills #rescue,body.impress-on-questions #rescue,body.impress-on-invite #rescue,body.impress-on-fin #rescue{opacity:1}
+
+/* ---------- steps ---------- */
+.step{pointer-events:none}
+.step.cam{width:1920px;height:1080px}
+.step.station{
+  width:800px;height:1030px;padding:60px 56px;text-align:center;
+  background:#fff;border-radius:110px;box-shadow:0 60px 160px rgba(19,19,19,.10);
+}
+.station .yr{font-weight:700;font-size:100px;margin-top:2px;letter-spacing:-.02em}
+.station .nm{font-size:62px;color:#5b6064;line-height:1.1}
+.station .rule{width:180px;height:5px;background:#D7C9FE;border-radius:3px;margin:32px auto}
+.station .detail{font-size:40px;line-height:1.52;color:#43474b;font-weight:500}
+.station .detail strong{color:var(--black);font-weight:700}
+.station .detail .strike{text-decoration:line-through;text-decoration-color:var(--warm);text-decoration-thickness:5px;color:#7a7468}
+.station .kick2{margin-top:34px;font-style:italic;font-size:44px;font-weight:700;color:var(--purple);line-height:1.3}
+.station svg,.station .yr,.station .nm{transition:transform .8s ease}
+.station:not(.present) svg,.station:not(.present) .yr,.station:not(.present) .nm{transform:translateY(255px)}
+
+#chance{
+  width:1700px;height:1040px;background:transparent;border:2px solid transparent;border-radius:40px;
+  padding:96px 110px;text-align:left;transition:background .6s ease .2s,border-color .6s ease .2s,box-shadow .6s ease .2s;
+}
+body.impress-on-chance #chance,body.impress-on-skills #chance,body.impress-on-questions #chance,body.impress-on-invite #chance,body.impress-on-fin #chance{background:var(--creme);border-color:#e4d9cc;box-shadow:0 60px 140px rgba(19,19,19,.12)}
+#chance>*{opacity:0;transition:opacity .6s ease .35s}
+body.impress-on-chance #chance>*,body.impress-on-skills #chance>*,body.impress-on-questions #chance>*,body.impress-on-invite #chance>*,body.impress-on-fin #chance>*{opacity:1}
+#chance .vl{font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;letter-spacing:.24em;color:var(--purple);margin-bottom:40px}
+#chance h2{font-weight:700;font-size:96px;letter-spacing:-.02em;margin-bottom:66px}
+#chance .row{display:flex;align-items:baseline;gap:44px;font-size:40px;font-weight:500;color:#43474b;margin-bottom:30px}
+#chance .row b{flex:0 0 230px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;color:var(--black)}
+#chance .row em{font-style:italic;color:#7a7468}
+#chance .term2{margin-top:54px;background:#0c120d;border:1px solid #1e3527;border-radius:18px;padding:30px 40px;
+  font-family:'IBM Plex Mono',monospace;font-size:30px;line-height:1.6;color:#9fd8b4}
+#chance .term2 .p{color:var(--green);font-weight:600}
+#chance .term2 .blank{color:var(--warm);font-weight:600}
+#chance .term2 em{font-style:italic;color:#5d7a66}
+#chance .vk{margin-top:52px;font-size:52px;font-style:italic;font-weight:700;color:var(--purple)}
+#chance .vk b{color:var(--warm)}
+
+#hint{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:95;
+  font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:#8b9298;
+  opacity:.65;animation:hintfade 1s ease 10s forwards;
+}
+@keyframes hintfade{to{opacity:0}}
+.impress-enabled .step{opacity:1}
+</style>
+</head>
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+  <p>This presentation needs a modern browser with CSS 3D transforms (Chrome, Firefox, Safari, Edge).</p>
+</div>
+
+<div id="impress" data-transition-duration="1000" data-width="1920" data-height="1080" data-max-scale="3">
+
+  <!-- ================= DECORATION: the canvas ================= -->
+  <div class="deco" id="dots"></div>
+
+  <div class="deco" id="brand">__VISMA_SVG__<span class="div"></span><img src="data:image/png;base64,__VT_B64__" alt="Vilnius Tech"></div>
+  <div class="deco" id="title">The End of the<br><span>Grand Compromise</span></div>
+  <div class="deco" id="subtitle">For 2,000 years the ideal teacher was too expensive. Not anymore.</div>
+
+  <div class="deco island" id="isl-past"></div>
+  <div class="deco island" id="isl-break"></div>
+  <div class="deco island" id="isl-future"></div>
+
+  <div class="deco zlbl" id="lbl-past" style="left:432px;top:374px"><b>01</b>THE PAST</div>
+  <div class="deco zsub" id="sub-past" style="left:432px;top:410px">2,000 years of compromises</div>
+  <div class="deco show r-hook" style="left:432px;top:448px;font-style:italic;font-size:21px;font-weight:600;color:var(--purple)">Not pedagogy. Economics.</div>
+  
+
+  <div class="deco zlbl" style="left:1352px;top:744px;color:#fff"><b>02</b>THE BREAK</div>
+
+  <div class="deco zlbl" style="left:1482px;top:104px"><b>03</b>THE FUTURE</div>
+
+  <svg class="overlay deco" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+    <path d="M120 305 C92 380 87 470 87 558" stroke="#7F56FA" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity=".45"/>
+    <path d="M87 575 H1270" stroke="#7F56FA" stroke-width="9" stroke-linecap="round"/>
+    <defs>
+      <linearGradient id="amp" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7F56FA"/><stop offset="1" stop-color="#FF7A59"/>
+      </linearGradient>
+    </defs>
+    <path d="M1270 575 L1302 612 L1268 650 L1324 674 L1334 720" stroke="url(#amp)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <g class="g-climb">
+      <path class="march" d="M1768 700 C1808 622 1690 584 1610 530 C1528 476 1478 446 1476 372" stroke="#7F56FA" stroke-width="7" stroke-dasharray="8 12" stroke-linecap="round" fill="none"/>
+      <path d="M1476 372 L1458 388 M1476 372 L1494 388" stroke="#7F56FA" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <g class="g-skills">
+      <path d="M1490 200 H1810" stroke="#7F56FA" stroke-width="5" stroke-dasharray="8 10" stroke-linecap="round"/>
+      <circle cx="1515" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+      <circle cx="1585" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+      <circle cx="1655" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+      <circle cx="1725" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+      <circle cx="1795" cy="200" r="11" fill="#FEFEFE" stroke="#7F56FA" stroke-width="4"/>
+    </g>
+  </svg>
+
+  <div class="deco wp pulse" style="left:87px;top:575px">→</div>
+  <div class="deco wp dark" style="left:1334px;top:724px">!</div>
+  <div class="deco dot-out"></div>
+  <div class="deco" id="today">TODAY</div>
+
+  <div class="deco" id="worked-line">And it worked. <em>— for its century.</em></div>
+
+  <div class="deco" id="term">
+    <span class="p">$</span> claude &gt;&gt; Implement my course work assignment, fulfill all requirements so i can get the max grade. Don't ask anything, just implement till the end. <span class="cur"></span>
+  </div>
+  <div class="deco" id="breakphrase">Homework no longer proves who did it.</div>
+  <div class="deco" id="provenance">1 agent · single run · less than 10 minutes</div>
+
+  <div class="deco skill" style="left:1515px;top:224px">judgment</div>
+  <div class="deco skill" style="left:1585px;top:148px">decomposition</div>
+  <div class="deco skill" style="left:1655px;top:224px">verification</div>
+  <div class="deco skill" style="left:1725px;top:148px">taste</div>
+  <div class="deco skill" style="left:1795px;top:224px">curiosity</div>
+  <div class="deco" id="qsheet">
+    <div class="qt">OPEN QUESTIONS</div>
+    <div class="qrow"><b>Q1</b><span>what do we grade now?</span></div>
+    <div class="qrow"><b>Q2</b><span>what should a lecturer do in the next years?</span></div>
+    <div class="qrow"><b>Q3</b><span>how do labs make AI a multiplier, not a stopper?</span></div>
+    <div class="qrow"><b>Q4</b><span>what can a student show that an agent can't?</span></div>
+    <div class="qrow"><b>Q5</b><span>what is still worth practicing by hand?</span></div>
+  </div>
+  <div class="deco" id="rescue">the work still counts — <span>the point moved.</span></div>
+
+  <div class="deco" id="closeblock">
+    <div class="zlbl"><b>04</b>THE INVITATION</div>
+    <p>Will we give<br>AI a chance?</p>
+    <div class="kick">Make it your tutor — not your ghostwriter.</div>
+  </div>
+  <div class="deco" id="footer">EDUCATION IN THE AGE OF AI · T. SZTURO · 2026</div>
+
+  <!-- ================= STEPS: the camera route ================= -->
+
+  <div id="start" class="step cam" data-x="310" data-y="200" data-scale="0.37">
+  </div>
+
+  <div id="hook" class="step cam" data-x="560" data-y="400" data-scale="0.30">
+  </div>
+
+  <div id="tutor" class="step station" data-x="492" data-y="575" data-scale="0.165">
+    <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><circle cx="24" cy="18" r="8"/><path d="M24 27 V46"/><circle cx="43" cy="23" r="6"/><path d="M43 30 V46"/><path d="M14 46 H52"/></svg>
+    <div class="yr">343 BC</div><div class="nm">the tutor</div>
+    <div class="rule"></div>
+    <div class="detail">Aristotle &amp; Alexander —<br><strong>a personal philosopher for a prince.</strong><br>One to one. Mastery pace. Full attention.</div>
+    <div class="kick2">The ideal always existed.<br>Almost no one could afford it.</div>
+  </div>
+
+  <div id="lecture" class="step station" data-x="656" data-y="575" data-scale="0.165">
+    <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M32 18 C26 12 14 11 8 14 V44 C14 41 26 42 32 48 C38 42 50 41 56 44 V14 C50 11 38 12 32 18 V48"/></svg>
+    <div class="yr">c. 1100</div><div class="nm">the lecture</div>
+    <div class="rule"></div>
+    <div class="detail"><em>Lectura</em> — "a reading."<br>One precious, hand-copied book —<br><strong>one voice, thirty pens.</strong></div>
+    <div class="kick2">The constraint died in 1450.<br>The format didn't.</div>
+  </div>
+
+  <div id="batch" class="step station" data-x="820" data-y="575" data-scale="0.165">
+    <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 44 C14 24 20 14 32 12 C44 14 50 24 50 44 Z"/><path d="M8 44 H56"/><circle cx="32" cy="52" r="4" fill="#7F56FA" stroke="none"/></svg>
+    <div class="yr">1763</div><div class="nm">the batch</div>
+    <div class="rule"></div>
+    <div class="detail"><span class="strike">"Schools were built for factory workers"</span> — myth.<br><strong>One trained teacher. Thirty children.<br>One pace for everyone.</strong></div>
+    <div class="kick2">Cohorts, bells, fixed curriculum —<br>we still drive this chassis.</div>
+  </div>
+
+  <div id="exam" class="step station" data-x="984" data-y="575" data-scale="0.165">
+    <svg width="200" height="200" viewBox="0 0 64 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><rect x="14" y="8" width="36" height="48" rx="4"/><path d="M22 20 H42"/><path d="M22 30 H38"/><path d="M22 40 H42"/></svg>
+    <div class="yr">1845</div><div class="nm">the exam</div>
+    <div class="rule"></div>
+    <div class="detail">Too many students, too few examiners —<br><strong>so: written, standardized, batch-graded.</strong></div>
+    <div class="kick2">A grade: lossy compression of a human.<br>A diploma: a trust signal for strangers.</div>
+  </div>
+
+  <div id="proof" class="step station" data-x="1148" data-y="575" data-scale="0.165">
+    <svg width="230" height="200" viewBox="0 0 72 64" fill="none" stroke="#7F56FA" stroke-width="5" stroke-linecap="round"><path d="M6 52 C16 52 19 18 30 18 C41 18 44 52 54 52" opacity=".4"/><path d="M18 52 C28 52 31 10 42 10 C53 10 56 52 66 52"/></svg>
+    <div class="yr">1984</div><div class="nm">the proof</div>
+    <div class="rule"></div>
+    <div class="detail">Bloom: tutored students ≈ <strong>+2σ</strong> above the classroom.<br>Replications: 0.3–0.8σ — <strong>still among the largest we know.</strong></div>
+    <div class="kick2">"Too costly for most societies<br>to bear on a large scale."</div>
+  </div>
+
+  <div id="worked" class="step cam" data-x="830" data-y="612" data-scale="0.50">
+  </div>
+
+  <div id="reveal" class="step cam" data-x="1565" data-y="870" data-scale="0.31" data-transition-duration="1500">
+  </div>
+
+  <div id="chance" class="step" data-x="1610" data-y="530" data-scale="0.13" data-transition-duration="1500">
+    <div class="vl">THE CHANCE</div>
+    <h2>The tutor is finally affordable.</h2>
+    <div class="row"><b>343 BC</b><span>one prince could afford it.</span></div>
+    <div class="row"><b>1984</b><span>measured: two sigma. <em>"too costly for most societies."</em></span></div>
+    <div class="row"><b>today</b><span>every student — patient, tireless, on demand.</span></div>
+    <div class="term2"><span class="p">$</span> claude &gt;&gt; I'm <span class="blank">______</span> <em>(e.g. a 1st-year Software Engineering student at VilniusTech)</em>. Teach me <span class="blank">______</span>. No answers — ask me questions until I get there myself.</div>
+    <div class="vk">AI didn't break education. <b>It broke the excuse.</b></div>
+  </div>
+
+  <div id="skills" class="step cam" data-x="1650" data-y="226" data-scale="0.235" data-transition-duration="1500">
+  </div>
+
+  <div id="questions" class="step cam" data-x="1220" data-y="200" data-scale="0.23">
+  </div>
+
+  <div id="invite" class="step cam" data-x="290" data-y="838" data-scale="0.30" data-transition-duration="1300">
+  </div>
+
+  <div id="fin" class="step cam" data-x="960" data-y="540" data-scale="1">
+  </div>
+
+</div>
+
+<div id="hint">→ next · ← back · B blackout · F discussion view</div>
+
+<script>
+/*__IMPRESS__*/
+</script>
+<script>
+impress().init();
+document.addEventListener("keyup", function(e){
+  if(e.key === "f" || e.key === "F"){ impress().goto("fin"); }
+});
+</script>
+</body>
+</html>
